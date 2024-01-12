@@ -1,13 +1,15 @@
 import React, { useState,useEffect} from 'react';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import SIdeMenu from './SIdeMenu';
-import Login from './Login';
+import Login from './Auth/Login.jsx';
 import Home from './Home';
 import Nav from './Nav';
 import Cards from './Cards';
+import Ro from './Auth/Ro';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Data from './Data';
+import Create from './Auth/Create.jsx';
 function Root() {
   const [items, setItems] = useState(0)
   function addCart(){
@@ -30,17 +32,21 @@ function Root() {
               <Link className='pr-5' onClick={slide} to={show ? '/' : '/SIdeMenu'}>SideMenu</Link>
             </div>
             <div>
-              <Link className='pr-5' onClick={slide} to={show ? '/': "/Login"}>
-                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>Login</button>
-             <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>{items}</button>
-              </Link>
+            <Link to='/Login' className='pr-5'>
+    <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+      Login
+    </button>
+    </Link>
+           
+              <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>{items}</button>
             </div>
    </div> 
 5
         <Routes>
           <Route path="/" element={<Cards addCart={addCart}  />} />
           { show && <Route path="/SIdeMenu" element={<SIdeMenu />} />}
-          { show && <Route path="/Login" element={<Login />} />}
+          <Route path="/Login/*" element={<Login />}/>
+ 
         </Routes>
       </BrowserRouter>
       <div className='flex bg-red'></div>
