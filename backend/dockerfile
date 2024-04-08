@@ -1,0 +1,38 @@
+# Build frontend
+FROM node:14 as frontend
+WORKDIR /app/frontend
+COPY ./frontend/package*.json ./
+RUN npm install
+COPY ./frontend .
+RUN npm run build
+
+# Build backend
+FROM node:14 as backend
+WORKDIR /app/backend
+COPY ./backend/package*.json ./
+RUN npm install
+COPY ./backend .
+
+# Final stage
+FROM node:14
+WORKDIR /app
+
+# Install pm2
+RUN npm install -g pm2
+
+# Copy frontend build
+COPY --from=frontend /app/frontend/dist ./frontend/laxmi/build
+
+
+
+# Copy backend
+COPY --from=backend /app/backend .
+
+# Copy process.yml
+COPY process.yml .
+
+# Expose ports
+EXPOSE 3000 5000
+
+# Start both servers
+CMD ["pm2-runtime", "start", "process.yml"]

@@ -1,0 +1,5 @@
+PORT=4045,
+MONGODB_URI=mongodb+srv://laxmi:MWFpMYQgdgaYsZU2@cluster0.6hi9olq.mongodb.net/
+JWT_KEY=IDGN4JJ
+
+    
