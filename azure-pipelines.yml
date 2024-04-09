@@ -21,7 +21,9 @@ steps:
     npm run build
   displayName: 'Install dependencies and build'
 
-- task: PublishBuildArtifacts@1
+- task: PublishPipelineArtifact@0
+  displayName: 'Publish pipeline artifact'
   inputs:
-    pathtoPublish: 'frontend/dist'  # Path to your built files
-    artifactName: 'frontend'  # Name of the artifact to be published
+    artifactName: 'drop'
+    targetPath: '$(Build.ArtifactStagingDirectory)'
+
