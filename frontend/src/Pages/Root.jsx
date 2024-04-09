@@ -39,11 +39,10 @@ function Root() {
          <Link to="/" className='text-xl font-semibold  mb-2 hover:text-xl'>laxmi keys</Link>
         </div>
           
-            <div className='hidden sm:block border-spacing-1 mt-2 border-red-900  curser:pointer'>
-              <Link className='pr-5 hover:text-lg hover:underline underline-offset-8  ' to="/About">About</Link>
+        
           
 
-              <Link className='pr-5 hover:-translate-y-1 hover:scale-110 hover:text-xl ' to="/About">Gallery</Link>
+              <Link className='pr-5 hover:-translate-y-1 hover:scale-110 hover:text-xl ' to="/About">Galleryasdfasdf</Link>
            
             </div>
             <div>
